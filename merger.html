@@ -46,6 +46,7 @@
     <button onclick="makeNewDiv()">Add end</button>
     <button onclick="addFront()">Add Front</button>
     <button onclick="remove()">Remove</button>
+    <button onclick="swapElements()">Swap</button>
   </body>
   <script>
     function makeNewDiv() {
@@ -85,6 +86,41 @@
         container.insertBefore(newMerger, container.firstChild);
 
         document.getElementById("inputText").value = "";
+      }
+    }
+    function swapElements() {
+      const mergerItems = document.getElementsByClassName("merger");
+      const length = mergerItems.length;
+      if (length < 2) {
+        return;
+      }
+
+      let randomIndex1 = Math.floor(Math.random() * length);
+      let randomIndex2 = randomIndex1;
+
+      while (randomIndex2 === randomIndex1) {
+        randomIndex2 = Math.floor(Math.random() * length);
+      }
+
+      const [index1, index2] = [randomIndex1, randomIndex2].sort(
+        (a, b) => a - b
+      );
+
+      const item1 = mergerItems[index1];
+      const item2 = mergerItems[index2];
+
+      const container = document.getElementById("target");
+
+      if (index1 + 1 === index2) {
+        container.insertBefore(item2, item1);
+      } else if (index2 + 1 === index1) {
+        container.insertBefore(item1, item2);
+      } else {
+        const itemAfter1 = mergerItems[index1 + 1];
+        const itemAfter2 = mergerItems[index2 + 1];
+
+        container.insertBefore(item2, itemAfter1);
+        container.insertBefore(item1, itemAfter2);
       }
     }
   </script>

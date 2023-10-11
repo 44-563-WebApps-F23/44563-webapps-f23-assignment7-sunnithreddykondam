@@ -35,12 +35,17 @@
       }
 
       document.getElementById("reactButton").onclick = recordTime;
+      function getRandomCountdown() {
+        return Math.floor(Math.random() * 9) + 2;
+      }
 
       function startTime() {
-        for (let i = 0; i < 9; i++) {
+        const countdown = getRandomCountdown();
+        document.getElementById("counter").innerHTML = countdown;
+        for (let i = 0; i < countdown; i++) {
           setTimeout(function () {
             document.getElementById("counter").innerHTML = i;
-          }, (8 - i) * 1000);
+          }, (countdown - i - 1) * 1000);
         }
 
         setTimeout(function () {
@@ -52,7 +57,7 @@
             document.getElementById("target").innerHTML =
               "Time was " + elapsedTime + " ms";
           }
-        }, 8000);
+        }, (countdown - 1) * 1000);
       }
     </script>
   </body>
