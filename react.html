@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Speed Check Sunnith</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div style="background-color: lightblue">
+      <h1 style="text-align: center">Find the treasure by Sunnith</h1>
+    </div>
+    <h2>Timeout - Red in 3 seconds</h2>
+
+    <button type="button" class="btn btn-primary" onclick="buttonPress2()">
+      Click me change the color.
+    </button>
+
+    <p id="target1">I will become red</p>
+    <div id="target">Your time </div>
+    <div id="counter">Count </span></div>
+    <button id="startTimerButton">Start Timer</button>
+    <button id="reactButton">React</button>
+    <script>
+      function buttonPress1() {
+        setTimeout(function () {
+          document.getElementById("target1").style.color = "red";
+        }, 3000);
+      }
+
+      function buttonPress2() {
+        setTimeout(() => {
+          document.getElementById("target1").style.color = "red";
+        }, 3000);
+      }
+
+      var reactTime = undefined;
+
+      function recordTime() {
+        reactTime = Date.now();
+        console.log(reactTime);
+       
+      }
+
+      document.getElementById("reactButton").onclick = recordTime;
+    </script>
+  </body>
+</html>
